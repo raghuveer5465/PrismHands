@@ -1,0 +1,7 @@
+# ── PrismHands ─────────────────────────────────────────────
+# Python 3.10+ recommended (tested on 3.10 – 3.12)
+
+opencv-python>=4.8.0     # webcam capture + image math
+mediapipe>=0.10.9        # two-hand landmark model (21 points per hand)
+numpy>=1.24.0            # HSV gradient ramps + alpha compositing
+pillow>=10.0.0           # OpenCV frame -> Tkinter bridge (ImageTk)

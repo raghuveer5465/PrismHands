@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="PrismHands — a Python + OpenCV + MediaPipe dashboard that tracks both hands and draws a flowing rainbow shape between your fingertips."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c1118'/%3E%3Cpath d='M16 6 L26 24 H6 Z' fill='none' stroke='%23e8eef7' stroke-width='2'/%3E%3Cpath d='M18 15 L27 12 M19 18 L28 18 M18 21 L27 24' stroke='%23ff5d5d' stroke-width='1.6'/%3E%3Cpath d='M18.5 16.5 L27 15' stroke='%23ffb454' stroke-width='1.6'/%3E%3Cpath d='M18.5 19.5 L27 21' stroke='%233ecf8e' stroke-width='1.6'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <title>PrismHands · Two-Hand Rainbow Shape Tracker — Python + MediaPipe</title>
+    <style>
+      /* Boot watchdog screen — only ever visible if the app failed to mount. */
+      #boot-fail {
+        display: none;
+        min-height: 100vh;
+        background: #0b0f16;
+        color: #e9eef6;
+        font-family: "JetBrains Mono", "Cascadia Code", Consolas, monospace;
+        padding: 10vh 24px 24px;
+        box-sizing: border-box;
+      }
+      #boot-fail .bf-card {
+        max-width: 620px;
+        margin: 0 auto;
+        border: 1px solid #223047;
+        border-left: 3px solid #ffb454;
+        background: #10161f;
+        border-radius: 8px;
+        padding: 28px 30px;
+      }
+      #boot-fail h1 { font-size: 17px; letter-spacing: 0.14em; color: #ffb454; margin: 0 0 14px; }
+      #boot-fail p { font-size: 13px; line-height: 1.7; color: #93a1b8; margin: 0 0 18px; }
+      #boot-fail code {
+        display: block; background: #0b0f16; border: 1px solid #1a2436; border-radius: 6px;
+        padding: 10px 14px; font-size: 12.5px; color: #3ecf8e; margin: 8px 0 16px;
+      }
+      #boot-fail .bf-dim { color: #5c6b82; font-size: 11.5px; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="boot-fail" aria-live="polite">
+      <div class="bf-card">
+        <h1>// PRISMHANDS DID NOT MOUNT</h1>
+        <p>
+          If you opened this file straight from the project source, that's expected —
+          the source index.html needs Vite to compile it. Run the dev server:
+        </p>
+        <code>npm run dev</code>
+        <p>Or build the self-contained single file and open <b style="color:#e9eef6">dist/index.html</b> directly in any browser:</p>
+        <code>npm run build</code>
+        <p class="bf-dim">dist/index.html inlines everything — it works from file:// with no server.</p>
+      </div>
+    </div>
+    <script>
+      // If React never mounts into #root, surface the recovery card instead
+      // of leaving a dead blank page. Stays invisible on a healthy boot.
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          var r = document.getElementById("root");
+          if (r && r.childElementCount === 0) {
+            document.getElementById("boot-fail").style.display = "block";
+          }
+        }, 1200);
+      });
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
